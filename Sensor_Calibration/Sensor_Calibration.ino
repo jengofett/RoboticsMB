@@ -5,7 +5,7 @@ enum SensorPosition {
   SenseLeft=0,
   SenseCenter=1,
   SenseRight=2,
-};
+}; 
 const int numSensors=3;
 //
 // Sensing pins
@@ -29,6 +29,8 @@ void loop()
 {for (int i = 0; i < numSensors; i++)
 {
   sensorInput[i]=analogRead(sensePin[i]);
+  sensorInput[i]=sensorInput[i]-550;
+  
   Serial.print(sensorInput[i]);
   Serial.print(" ");
 }
