@@ -253,52 +253,8 @@ void loop()
   const int mute=21;
   static bool allowCalibrate=false;
   
-  if (microM.ircommand > 0)
-  {
-    switch (microM.ircommand)
-    {
-      case popmenu:
-        allowCalibrate = true;
-        Serial.println("Allow Calibrate");
-        break;
-      case topmenu:
-        allowCalibrate=false;
-        Serial.println("Calibration Locked");
-        break;
-      case mute:
-        if (allowCalibrate) 
-        {
-          calibrateZeroLevel();
-          microM.ircommand = 0;
-          allowCalibrate=false;
-        }
-        break;
-      case upKey:
-        microM.Motors(200,200,0,0);
-        microM.ircommand = 0;
-        delay(40);
-        break;
-      case downKey:
-        microM.Motors(-200,-200,0,0);
-        microM.ircommand = 0;
-        delay(40);
-        break;
-      case leftKey:
-        microM.Motors(0,200,0,0);
-        microM.ircommand = 0;
-        delay(40);
-        break;
-      case rightKey:
-        microM.Motors(200,0,0,0);
-        microM.ircommand = 0;
-        delay(40);
-        break;
-      case power:
-        microM.Motors(0,0,0,0);
-        microM.ircommand = 0;
-        delay(40);
-        break;      
-       case exit:
+
+
         while (microM.ircommand == exit)
         {
          
